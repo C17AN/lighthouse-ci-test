@@ -15,15 +15,15 @@ jobs:
 
       - name: Install packages
         run: |
-          yarn install --immutable --immutable-cache --check-cache
+          npm ci
 
       - name: Build
         run: |
-          yarn build
+          npm run build
 
       - name: Run Lighthouse CI
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
         run: |
-          yarn add global @lhci/cli
+          npm install global @lhci/cli
           lhci autorun || echo "Fail to Run Lighthouse CI!"
